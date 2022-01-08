@@ -1,0 +1,5 @@
+{
+    "code-runner.executorMap": {
+        "cpp": "clear && cd $dir && cd .. && g++ -I ./include ./src/*.cpp -L ./lib -lglfw3dll -lopengl32 -o ./bin/ampere && ./bin/ampere.exe",
+    }
+}
