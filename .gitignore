@@ -1,5 +1,5 @@
 # Prerequisites
-Debug
+libs/**/*.h
 
 *.d
 
