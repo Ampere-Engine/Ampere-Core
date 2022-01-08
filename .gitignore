@@ -1,5 +1,6 @@
 # Prerequisites
-libs/**/*.h
+libs/
+!libs/libs.json
 
 *.d
 
@@ -32,3 +33,6 @@ libs/**/*.h
 *.exe
 *.out
 *.app
+
+.fake
+.ionide
