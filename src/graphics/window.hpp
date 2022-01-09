@@ -12,11 +12,15 @@ namespace ampere {
                 GLFWwindow *m_Window;
 
                 bool init();
+                inline int getWidth() const { return m_Width; }
+                inline int getHeight() const { return m_Height; }
+
             public:
                 Window(const char *name, int width, int height);
                 ~Window();
+                void clear() const;
                 bool closed() const;
-                void update() const;
+                void update();
         };
     };
 }

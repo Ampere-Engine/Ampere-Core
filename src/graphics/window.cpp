@@ -4,6 +4,8 @@
 
 namespace ampere {
     namespace graphics {
+        void windowResize(GLFWwindow* window, int width, int height);
+
         Window::Window(const char *name, int width, int height) {
             m_Name = name;
             m_Width = width;
@@ -33,16 +35,25 @@ namespace ampere {
                 return false;
             }
             glfwMakeContextCurrent(m_Window);
+            glfwSetWindowSizeCallback(m_Window, windowResize);
             return true;
+        }
+        
+        void Window::clear() const {
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        }
+
+        void Window::update() {
+            glfwPollEvents();
+            glfwSwapBuffers(m_Window);
         }
 
         bool Window::closed() const {
-            return glfwWindowShouldClose(m_Window);
+            return glfwWindowShouldClose(m_Window) == 1;
         }
 
-        void Window::update() const {
-            glfwPollEvents();
-            glfwSwapBuffers(m_Window);
+        void windowResize(GLFWwindow* window, int width, int height) {
+            glViewport(0, 0, width, height);
         }
     }
 }
