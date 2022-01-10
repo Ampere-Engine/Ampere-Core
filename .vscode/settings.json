@@ -1,6 +1,6 @@
 {
     "code-runner.executorMap": {
-        "cpp": "clear && cd $dir && cd .. && g++ ./src/*.cpp ./src/graphics/*.cpp -I ./include -L ./lib -lglfw3dll -lopengl32 -o ./bin/ampere && ./bin/ampere.exe",
+        "cpp": "clear && cd $dir && cd .. && g++ ./src/*.cpp ./src/graphics/*.cpp -I ./include -L ./lib -lglfw3dll -lopengl32 -lglew32 -o ./bin/ampere && ./bin/ampere.exe",
     },
     "files.associations": {
         "*.ejs": "html",

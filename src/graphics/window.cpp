@@ -1,5 +1,7 @@
 #include <iostream>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
 #include "window.hpp"
 
 namespace ampere {
@@ -36,6 +38,14 @@ namespace ampere {
             }
             glfwMakeContextCurrent(m_Window);
             glfwSetWindowSizeCallback(m_Window, windowResize);
+
+            std::cout<<"OpenGL "<<glGetString(GL_VERSION)<<std::endl;
+            
+            if(glewInit() != GLEW_OK) {
+                std::cout << "GLEW initialization failed" << std::endl;
+                return false;
+            }
+            
             return true;
         }
         
