@@ -4,9 +4,15 @@
 
 #include "window.hpp"
 
-namespace ampere {
-    namespace graphics {
-        void windowResize(GLFWwindow* window, int width, int height);
+namespace Ampere {
+    namespace Graphics {
+        bool Window::m_Keys[MAX_KEYS];
+        bool Window::m_MouseButtons[MAX_BUTTONS];
+        double Window::ox;
+        double Window::oy;
+
+        void window_resize(GLFWwindow* window, int width, int height);
+        void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
         Window::Window(const char *name, int width, int height) {
             m_Name = name;
@@ -15,6 +21,13 @@ namespace ampere {
             if(!init()) {
                 glfwTerminate();
             };
+
+            for (int i = 0; i < MAX_KEYS; i++) {
+                m_Keys[i] = false;
+            }
+            for (int i = 0; i < MAX_BUTTONS; i++) {
+                m_MouseButtons[i] = false;
+            }
         }
 
         Window::~Window() {
@@ -37,16 +50,26 @@ namespace ampere {
                 return false;
             }
             glfwMakeContextCurrent(m_Window);
-            glfwSetWindowSizeCallback(m_Window, windowResize);
+            glfwSetWindowUserPointer(m_Window, this);
+            glfwSetWindowSizeCallback(m_Window, window_resize);
+            glfwSetKeyCallback(m_Window, key_callback);
 
             if(glewInit() != GLEW_OK) {
-                std::cout << "GLEW initialization failed" << std::endl;
+                std::cout << "GLEW initialization failed"<<std::endl;
                 return false;
             }
             
             std::cout<<"OpenGL "<<glGetString(GL_VERSION)<<std::endl;
             
             return true;
+        }
+
+        bool Window::isKeyPressed(unsigned int keycode) {
+            // TODO: Log this!
+            if (keycode >= MAX_KEYS) {
+                return false;
+            }
+            return m_Keys[keycode];
         }
         
         void Window::clear() const {
@@ -62,8 +85,13 @@ namespace ampere {
             return glfwWindowShouldClose(m_Window) == 1;
         }
 
-        void windowResize(GLFWwindow* window, int width, int height) {
+        void window_resize(GLFWwindow* window, int width, int height) {
             glViewport(0, 0, width, height);
+        }
+
+        void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+            Window* win = (Window*) glfwGetWindowUserPointer(window);
+            win->m_Keys[key] = action != GLFW_RELEASE;
         }
     }
 }
