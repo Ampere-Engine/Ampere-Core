@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Simple game engine written in C++",
   "scripts": {
-    "start": "cd scripts && start.sh"
+    "sandbox": "cd scripts && start.sh",
+    "compile": "cd scripts && compile.sh"
   },
   "repository": {
     "type": "git",

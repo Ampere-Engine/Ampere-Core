@@ -1,7 +1,9 @@
 # Prerequisites
 include
-libs/
-!libs/libs.json
+lib
+bin
+sandbox
+sandbox.*
 
 *.d
 
