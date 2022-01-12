@@ -8,5 +8,8 @@ namespace Ampere {
             App();
             virtual ~App();
             void Run();
+
+            // On in client
     };
+    App* CreateApp();
 }

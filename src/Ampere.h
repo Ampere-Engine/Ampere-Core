@@ -1,4 +1,7 @@
 #pragma once
 
 #include "core/app.hpp"
-#include "core/core.hpp"
+
+// ---- Entry Point -----------------------
+#include "core/main.hpp"
+// ----------------------------------------
