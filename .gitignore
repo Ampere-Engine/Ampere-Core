@@ -6,6 +6,10 @@ sandbox
 sandbox.*
 .vscode
 
+CMakeFiles
+CMakeCache.txt
+build
+
 *.d
 
 # Compiled Object files
