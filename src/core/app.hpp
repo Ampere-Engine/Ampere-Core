@@ -6,10 +6,8 @@ namespace Ampere {
     class AMPERE_API App {
         public:
             App();
-            virtual ~App();
+            ~App();
+            void CreateApp();
             void Run();
-
-            // On in client
     };
-    App* CreateApp();
 }

@@ -9,4 +9,3 @@
 #else
     #error Ampere supports only Windows!
 #endif
-

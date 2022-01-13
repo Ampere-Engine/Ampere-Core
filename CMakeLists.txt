@@ -3,13 +3,13 @@ project(ampere)
 
 set(CMAKE_C_COMPILER "D:/MSYS2/mingw64/bin/gcc.exe")
 set(CMAKE_CXX_COMPILER "D:/MSYS2/mingw64/bin/g++.exe")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(modules/spdlog/include)
 
-file(GLOB SOURCES "./src/**/*.cpp" "./src/**/*.hpp" "./src/*.h")
+file(GLOB SOURCES "./src/*.h" "./src/*.cpp" "./src/*.hpp" "./src/**/*.cpp" "./src/**/*.hpp")
 file(GLOB HEADERS include/*.h)
 
 add_library(ampere SHARED ${SOURCES})
