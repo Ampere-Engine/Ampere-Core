@@ -1,11 +1,7 @@
 cmake_minimum_required(VERSION 3.22.1)
 project(ampere)
 
-set(CMAKE_C_COMPILER "D:/MSYS2/mingw64/bin/gcc.exe")
 set(CMAKE_CXX_COMPILER "D:/MSYS2/mingw64/bin/g++.exe")
-# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(modules/spdlog/include)
 
