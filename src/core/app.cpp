@@ -1,4 +1,5 @@
 #include "app.hpp"
+#include "log.hpp"
 #include "../ampinc.hpp"
 
 namespace Ampere {
@@ -10,6 +11,7 @@ namespace Ampere {
     }
 
     void App::CreateApp() {
+        Log log;
         std::cout<<"Creating";
     }
 }
