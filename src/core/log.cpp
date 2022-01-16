@@ -1,8 +1,10 @@
 #include "log.hpp"
+#include <memory>
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/ansicolor_sink.h>
 
 namespace Ampere {
     std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
@@ -10,16 +12,36 @@ namespace Ampere {
 
     Log::Log() {
         Init();
-        GetCoreLogger()->info(">-- Ampere Engine --<");
+        GetCoreLogger()->info(">--- Ampere Engine ---<");
+        GetCoreLogger()->trace("test");
+        GetCoreLogger()->debug("test");
+        GetCoreLogger()->info("test");
+        GetCoreLogger()->warn("test");
+        GetCoreLogger()->error("test");
+        GetCoreLogger()->critical("test");
+
         GetClientLogger()->warn("Hello");
+        GetClientLogger()->trace("test");
+        GetClientLogger()->debug("test");
+        GetClientLogger()->info("test");
+        GetClientLogger()->warn("test");
+        GetClientLogger()->error("test");
+        GetClientLogger()->critical("test");
     };
         
     void Log::Init() {
-        spdlog::set_pattern("%^[%T] %n: %v%$");
-        spdlog::info("Welcome to spdlog!");
-        s_CoreLogger = spdlog::stdout_color_mt("Ampere");
+
+        auto sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();
+        sink->set_color(spdlog::level::warn, sink->yellow);
+        sink->set_color(spdlog::level::err, sink->red);
+        sink->set_color(spdlog::level::critical, sink->magenta);
+
+        s_CoreLogger = std::make_shared<spdlog::logger>("Ampere", sink);
+        s_CoreLogger->set_pattern("%^[%T] %n: %v%$");
         s_CoreLogger->set_level(spdlog::level::trace);
-        s_ClientLogger = spdlog::stdout_color_mt("App");
+
+        s_ClientLogger = std::make_shared<spdlog::logger>("App", sink);
+        s_ClientLogger->set_pattern("%^[%T] %n: %v%$");
         s_ClientLogger->set_level(spdlog::level::trace);
     }
 }
