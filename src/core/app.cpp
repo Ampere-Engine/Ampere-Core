@@ -5,7 +5,9 @@
 #include "../events/event_window.hpp"
 
 namespace Ampere {
-    App::App() {}
+    App::App() {
+        Log log; // Log init
+    }
     App::~App() {}
 
     void App::Run() {
@@ -15,6 +17,6 @@ namespace Ampere {
     }
 
     void App::CreateApp() {
-        std::cout<<"Creating";
+        std::cout<<"Creating"<<std::endl;
     }
 }

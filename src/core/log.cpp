@@ -11,22 +11,27 @@ namespace Ampere {
     std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
     Log::Log() {
-        Init();
-        GetCoreLogger()->info(">--- Ampere Engine ---<");
-        GetCoreLogger()->trace("test");
-        GetCoreLogger()->debug("test");
-        GetCoreLogger()->info("test");
-        GetCoreLogger()->warn("test");
-        GetCoreLogger()->error("test");
-        GetCoreLogger()->critical("test");
 
-        GetClientLogger()->warn("Hello");
-        GetClientLogger()->trace("test");
-        GetClientLogger()->debug("test");
-        GetClientLogger()->info("test");
-        GetClientLogger()->warn("test");
-        GetClientLogger()->error("test");
-        GetClientLogger()->critical("test");
+        Init();
+        GetCoreLogger()->debug(">--- Ampere Engine ---<");
+        
+        bool iAmRainbow = false;
+        if (iAmRainbow) {
+            GetCoreLogger()->trace("test");
+            GetCoreLogger()->debug("test");
+            GetCoreLogger()->info("test");
+            GetCoreLogger()->warn("test");
+            GetCoreLogger()->error("test");
+            GetCoreLogger()->critical("test");
+
+            GetClientLogger()->warn("Hello");
+            GetClientLogger()->trace("test");
+            GetClientLogger()->debug("test");
+            GetClientLogger()->info("test");
+            GetClientLogger()->warn("test");
+            GetClientLogger()->error("test");
+            GetClientLogger()->critical("test");
+        }
     };
         
     void Log::Init() {
