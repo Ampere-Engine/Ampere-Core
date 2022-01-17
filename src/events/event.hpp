@@ -8,7 +8,7 @@ namespace Ampere {
         None = 0,
         WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
         AppTick, AppUpdate, AppRender,
-        KeyPressed, KeyRelease,
+        KeyPressed, KeyReleased,
         MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
     };
 
@@ -21,11 +21,11 @@ namespace Ampere {
     };
 
 #define EVENT_CLASS_TYPE(type)\
-    static EventType GetStaticType() { return EventType::##type; }\
-    virtual EventType GetEventType() const override { return GetEventType(); }\
-    visual const char* GetName() const override { return #type;}
+    static EventType GetStaticType() { return EventType::type; }\
+    virtual EventType GetEventType() const override { return GetStaticType(); }\
+	virtual const char* GetName() const override { return #type; }
 
-#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category;}
+#define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
     class AMPERE_API Event {
         friend class EventDispatcher;
@@ -54,9 +54,13 @@ namespace Ampere {
                 if (m_Event.GetEventType() == T::GetStaticType()) {
                     m_Event.m_Handled = func(*(T*)&m_Event);
                     return true;
-                } else return false
+                } else return false;
             }
         private:
             Event& m_Event;
+    };
+
+    inline std::ostream& operator<<(std::ostream& os, const Event& e) {
+        return os << e.ToString();
     };
 }

@@ -2,16 +2,19 @@
 #include "log.hpp"
 #include "../ampinc.hpp"
 
+#include "../events/event_window.hpp"
+
 namespace Ampere {
     App::App() {}
     App::~App() {}
 
     void App::Run() {
+        WindowResizeEvent e(1200, 720);
+        AMP_DEBUG(e);
         std::cout<<"App is running"<<std::endl;
     }
 
     void App::CreateApp() {
-        Log log;
         std::cout<<"Creating";
     }
 }
