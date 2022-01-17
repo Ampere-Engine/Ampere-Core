@@ -1,5 +1,5 @@
 #include "log.hpp"
-#include <memory>
+#include "../ampinc.hpp"
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
