@@ -26,8 +26,9 @@ namespace Ampere {
 
         if (!s_GLFWInitialized) {
             // TODO: glfwTerminate on system shutdown
-            int success = glfwInit();
-            AMP_CORE_ERROR("Could not initialize GLFW");
+            if (!glfwInit()) {
+                AMP_CORE_ERROR("Could not initialize GLFW");
+            }
 
             s_GLFWInitialized = true;
         }

@@ -7,16 +7,16 @@
 namespace Ampere {
     App::App() {
         Log log; // Log init
+        m_Window = std::unique_ptr<Window>(Window::Create());
+
+        AMP_INFO("Creating app");
     }
     App::~App() {}
 
     void App::Run() {
-        WindowResizeEvent e(1200, 720);
-        AMP_DEBUG(e);
-        std::cout<<"App is running"<<std::endl;
-    }
-
-    void App::CreateApp() {
-        std::cout<<"Creating"<<std::endl;
+        while (m_Running) {
+            // glClearColor(0.0, 0.6, 0.8, 1);
+            m_Window->OnUpdate();
+        }
     }
 }
