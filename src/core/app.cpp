@@ -1,8 +1,8 @@
 #include "app.hpp"
 #include "log.hpp"
-#include "../ampinc.hpp"
+#include "ampinc.hpp"
 
-#include "../events/event_window.hpp"
+#include "events/event_window.hpp"
 
 namespace Ampere {
     App::App() {
