@@ -4,6 +4,7 @@ project(ampere)
 set(CMAKE_CXX_COMPILER "D:/MSYS2/mingw64/bin/g++.exe")
 
 include_directories(modules/spdlog/include)
+include_directories(modules/glfw/include)
 
 file(GLOB SOURCES "./src/*.h" "./src/*.cpp" "./src/*.hpp" "./src/**/*.cpp" "./src/**/*.hpp")
 file(GLOB HEADERS include/*.h)

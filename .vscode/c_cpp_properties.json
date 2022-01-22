@@ -4,6 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/modules/spdlog/include",
+                "${workspaceFolder}/modules/glfw/include",
                 "${workspaceFolder}/src"
             ],
             "defines": [
