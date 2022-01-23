@@ -9,6 +9,7 @@ namespace Ampere {
         public:
             App();
             ~App();
+            void OnEvent(Event& e);
             void Run();
 
         private:

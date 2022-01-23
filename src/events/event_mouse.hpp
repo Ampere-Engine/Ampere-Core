@@ -63,7 +63,7 @@ namespace Ampere {
                 ss << "MouseButtonPressedEvent: " << m_Button;
                 return ss.str();
             }
-            EVENT_CLASS_TYPE(MouseButtonPressedEvent);
+            EVENT_CLASS_TYPE(MouseButtonPressed);
     };
 
     class AMPERE_API MouseButtonReleasedEvent : public MouseButtonEvent {
@@ -75,6 +75,6 @@ namespace Ampere {
                 ss << "MouseButtonReleasedEvent: " << m_Button;
                 return ss.str();
             }
-            EVENT_CLASS_TYPE(MouseButtonReleasedEvent);
+            EVENT_CLASS_TYPE(MouseButtonReleased);
     };
 }

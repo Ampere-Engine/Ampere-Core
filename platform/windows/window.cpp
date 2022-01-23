@@ -1,5 +1,10 @@
 #include "ampinc.hpp"
 #include "./window.hpp"
+#include "events/event_window.hpp"
+#include "events/event_app.hpp"
+#include "events/event_key.hpp"
+#include "events/event_mouse.hpp"
+
 #include <GLFW/glfw3.h>
 
 namespace Ampere {
@@ -37,6 +42,16 @@ namespace Ampere {
         glfwMakeContextCurrent(m_Window);
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
+
+        // SET GLFW callbacks
+        glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+            WindowResizeEvent event(width, height);
+            data.Width = width;
+            data.Height = height;
+            data.EventCallback(event);
+        });
     }
 
     void WindowsWindow::Shutdown() {

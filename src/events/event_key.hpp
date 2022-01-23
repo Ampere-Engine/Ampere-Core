@@ -32,7 +32,7 @@ namespace Ampere {
             int m_RepeatCount;
     };
 
-    class AMPERE_API KeyReleasedEvent : public Event {
+    class AMPERE_API KeyReleasedEvent : public KeyEvent {
         public:
             KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 
