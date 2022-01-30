@@ -14,6 +14,6 @@
 
 #include "core/log.hpp"
 
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef AMP_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
